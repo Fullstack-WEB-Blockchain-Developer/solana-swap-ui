@@ -1,10 +1,11 @@
 @import './color.module'
 
+.jupiterPage
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 80vh
 .jupiterFormModal
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
   padding: 4rem 2rem
   border-radius: 1rem
   background-color: rgba(0,0,0,.3)
@@ -35,7 +36,7 @@
       padding: 1.6rem
       border: solid .1rem $yellow
       outline: none
-      width: 100%
+      width: 80%
       font-size: 1.8rem
       border-radius: .5rem
       margin-top: 2rem
@@ -94,4 +95,75 @@
     justify-content: space-between
     margin-top: 8px
     opacity: 0.75
+  .tokenSelect
+    border: 1px solid red
+  .swapPage
+    position: relative
+    height: calc( 100vh - 7rem )
+    color: $white
+    background-color: $main_blue
+  .overlay
+    transition: .3s
+    background-color: rgba(0,0,0,.5)
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 99
+  .tokenListTitleRow
+    padding: 1rem 2.5rem 0 2.5rem
+    font-size: 1.4rem
+    font-weight: 600
+    height: 5rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .tokenContainer
+    max-width: 45rem
+    width: calc(100vw - 1.6rem)
+    height: calc( 100vh - 14rem)
+    overflow: hidden
+    background-color: $token_list_bgc
+    position: absolute
+    top: 10rem
+    left: 50%
+    transform: translateX(-50%)
+    border-radius: .5rem
+  .closeIcon
+    cursor: pointer
+  .header
+    height: 6rem
+    padding: 2.4rem
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font-size: 1.6rem
+    font-weight: 600
+    letter-spacing: 1px
+    border-bottom: solid .1rem $white
+  .list
+    height: calc(100% - 26rem)
+    overflow: scroll
+    padding: 0 1.5rem 2rem 1.5rem
+    &::-webkit-scrollbar
+      display: none
+  .tokenRow
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: .8rem 1.2rem
+    font-size: 1.6rem
+    cursor: pointer
+    &:hover
+      background-color: $coin_select_block_bgc
+      opacity: .7
+  .tokenItem
+    display: flex
+  .tokenLogo
+    width: 2rem
+    height: 2rem
+    border-radius: 50%
+    overflow: hidden
+    margin-right: 1.2rem
 
