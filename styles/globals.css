@@ -1,16 +1,14 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 10px;
+  background-color: rgb(19, 27, 51);
+  color: #eee;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.wallet-adapter-modal-list-more {
+  color: #eee;
 }
-
-* {
-  box-sizing: border-box;
+.wallet-adapter-button-trigger {
+  background-color: #fbae21 !important;
+  color: black !important;
 }
