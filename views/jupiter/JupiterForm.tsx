@@ -32,12 +32,15 @@ const JupiterForm: FunctionComponent<IJupiterFormProps> = (props) => {
     slippage: 1, // 1%
   });
 
-  const [inputTokenInfo, outputTokenInfo] = useMemo(() => {
-    return [
-      tokenMap.get(formValue.inputMint?.toBase58() || ""),
-      tokenMap.get(formValue.outputMint?.toBase58() || ""),
-    ];
-  }, [formValue.inputMint?.toBase58(), formValue.outputMint?.toBase58()]);
+  const [inputTokenInfo, inputTokenLogo, outputTokenInfo, outputTokenLogo] =
+    useMemo(() => {
+      return [
+        tokenMap.get(formValue.inputMint?.toBase58() || ""),
+        tokenMap.get(formValue.inputMint?.toBase58() || "")?.logoURI,
+        tokenMap.get(formValue.outputMint?.toBase58() || ""),
+        tokenMap.get(formValue.outputMint?.toBase58() || "")?.logoURI,
+      ];
+    }, [formValue.inputMint?.toBase58(), formValue.outputMint?.toBase58()]);
   const [splTokenData, setSplTokenData] = useState<ISplToken[]>([]);
 
   useEffect(() => {
@@ -143,8 +146,22 @@ const JupiterForm: FunctionComponent<IJupiterFormProps> = (props) => {
       <div>{/* <SplTokenList splTokenData={splTokenData} /> */}</div>
       <div className={style.jupiterFormModal}>
         <div className={style.tokenSelect}>
-          <div>From</div>
+          <div className={style.inputTitle}>From</div>
           <div className={style.inputBlock}>
+            <div
+              className={style.selectTokenBtn}
+              onClick={() => setShowTokenSelect(!showTokenSelect)}
+            >
+              {inputTokenLogo && (
+                <img src={inputTokenLogo} alt="logo" className={style.img} />
+              )}
+              <div className={style.coinNameBlock}>
+                <span className={style.coinName}>
+                  {inputTokenInfo?.symbol && inputTokenInfo?.symbol}
+                </span>
+                <ArrowDownIcon w={18} h={18} />
+              </div>
+            </div>
             <input
               className={style.searchTokenInput}
               name="amount"
@@ -161,10 +178,6 @@ const JupiterForm: FunctionComponent<IJupiterFormProps> = (props) => {
                 }));
               }}
             />
-            <button onClick={() => setShowTokenSelect(!showTokenSelect)}>
-              <span>{inputTokenInfo?.symbol && inputTokenInfo?.symbol}</span>
-              <ArrowDownIcon w={20} h={20} />
-            </button>
           </div>
 
           {showTokenSelect && (
@@ -225,72 +238,80 @@ const JupiterForm: FunctionComponent<IJupiterFormProps> = (props) => {
           )}
         </div>
 
-        <div className={style.jupiterFormModal}>
-          <div className={style.tokenSelect}>
-            <div>To</div>
-            <button onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}>
-              <span>{outputTokenInfo?.symbol && outputTokenInfo?.symbol}</span>
-              <ArrowDownIcon w={20} h={20} />
-            </button>
+        <div className={style.tokenSelect}>
+          <div className={style.inputTitle}>To (estimated)</div>
+          <div
+            className={style.selectTokenBtn}
+            onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}
+          >
+            {outputTokenLogo && (
+              <img src={outputTokenLogo} alt="logo" className={style.img} />
+            )}
+            <div className={style.coinNameBlock}>
+              <span className={style.coinName}>
+                {outputTokenInfo?.symbol && outputTokenInfo?.symbol}
+              </span>
+              <ArrowDownIcon w={18} h={18} />
+            </div>
           </div>
+        </div>
 
-          {showOutTokenSelect && (
+        {showOutTokenSelect && (
+          <div
+            className={style.overlay}
+            onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}
+          >
             <div
-              className={style.overlay}
-              onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}
+              className={style.tokenContainer}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className={style.tokenContainer}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className={style.header}>
-                  <div>Select a token</div>
-                  <div
-                    className={style.closeIcon}
-                    onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}
-                  >
-                    <CloseIcon w={20} h={20} />
-                  </div>
-                </div>
-                <div className={style.tokenListTitleRow}>
-                  <div>Token name</div>
-                </div>
-                <div className={style.list}>
-                  {outputList.map((t: IToken) => {
-                    return (
-                      <div
-                        key={t.mint}
-                        data-mint={t.mint}
-                        className={style.tokenRow}
-                        onClick={(e) => {
-                          const dataMint =
-                            e.currentTarget.getAttribute("data-mint") || "";
-                          const pbKey = new PublicKey(dataMint);
-                          if (pbKey) {
-                            setFormValue((val) => ({
-                              ...val,
-                              outputMint: pbKey,
-                            }));
-                          }
-                          setShowOutTokenSelect(!showOutTokenSelect);
-                        }}
-                      >
-                        <div className={style.tokenItem}>
-                          <img
-                            src={t.logoURI}
-                            alt=""
-                            className={style.tokenLogo}
-                          />
-                          <div>{t.symbol}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
+              <div className={style.header}>
+                <div>Select a token</div>
+                <div
+                  className={style.closeIcon}
+                  onClick={() => setShowOutTokenSelect(!showOutTokenSelect)}
+                >
+                  <CloseIcon w={20} h={20} />
                 </div>
               </div>
+              <div className={style.tokenListTitleRow}>
+                <div>Token name</div>
+              </div>
+              <div className={style.list}>
+                {outputList.map((t: IToken) => {
+                  return (
+                    <div
+                      key={t.mint}
+                      data-mint={t.mint}
+                      className={style.tokenRow}
+                      onClick={(e) => {
+                        const dataMint =
+                          e.currentTarget.getAttribute("data-mint") || "";
+                        const pbKey = new PublicKey(dataMint);
+                        if (pbKey) {
+                          setFormValue((val) => ({
+                            ...val,
+                            outputMint: pbKey,
+                          }));
+                        }
+                        setShowOutTokenSelect(!showOutTokenSelect);
+                      }}
+                    >
+                      <div className={style.tokenItem}>
+                        <img
+                          src={t.logoURI}
+                          alt=""
+                          className={style.tokenLogo}
+                        />
+                        <div>{t.symbol}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {routes && (
           <div className={style.totalRoutes}>

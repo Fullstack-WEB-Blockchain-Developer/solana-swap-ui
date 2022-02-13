@@ -7,7 +7,7 @@
   height: 80vh
 .jupiterFormModal
   padding: 4rem 2rem
-  border-radius: 1rem
+  border-radius: 0.4rem
   background-color: rgba(0,0,0,.3)
   width: 400px
   font-size: 1.5rem
@@ -30,16 +30,17 @@
     padding: .2rem 1rem
     margin: 1rem 0 1rem 0
     outline: none
+  .inputTitle
+    margin-bottom: 1rem
   .inputBlock
-    margin: 24px 0px
+    display: flex
     .searchTokenInput
-      padding: 1.6rem
-      border: solid .1rem $yellow
+      text-align: right
       outline: none
-      width: 80%
+      border: none
+      flex: 1
       font-size: 1.8rem
-      border-radius: .5rem
-      margin-top: 2rem
+      border-radius: 0.4rem
       box-sizing: border-box
       background: transparent
       color: white
@@ -49,7 +50,7 @@
     border: solid .1rem $yellow
     color: white
     background-color: transparent
-    border-radius: .4rem
+    border-radius: 0.4rem
     margin-top: 2rem
     font-size: 1.6rem
     font-weight: 600
@@ -72,7 +73,7 @@
     padding: 15px 16px 16px
     margin-top: 24px
     font-size: 13px
-    border-radius: 8px 12px 12px
+    border-radius: 0.4rem
     transition: border .2s, background-color .2s
     border: 1px solid $yellow
   .bestRouteTag
@@ -81,7 +82,7 @@
     background: $yellow
     color: white
     padding: 4px 10px
-    border-radius: 4px
+    border-radius: 0.4rem
     position: absolute
     left: -1px
     top: -10px
@@ -96,7 +97,10 @@
     margin-top: 8px
     opacity: 0.75
   .tokenSelect
-    border: 1px solid red
+    border: .1rem solid $yellow
+    margin: 24px 0
+    padding: 15px 16px 16px
+    border-radius: 0.4rem
   .swapPage
     position: relative
     height: calc( 100vh - 7rem )
@@ -129,7 +133,7 @@
     top: 10rem
     left: 50%
     transform: translateX(-50%)
-    border-radius: .5rem
+    border-radius: 0.4rem
   .closeIcon
     cursor: pointer
   .header
@@ -166,4 +170,21 @@
     border-radius: 50%
     overflow: hidden
     margin-right: 1.2rem
+  .selectTokenBtn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    padding: .5rem
+    padding-left: 0
+    border-radius: .5rem
+    font-weight: 500
+    height: 4rem
+    &:hover
+      background-color: $token_list_bgc
+      cursor: pointer
+  .img
+    width: 2.4rem
+    height: 2.4rem
+    border-radius: 50%
+    margin-right: 1rem
 
