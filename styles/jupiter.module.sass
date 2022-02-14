@@ -1,0 +1,190 @@
+@import './color.module'
+
+.jupiterPage
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 80vh
+.jupiterFormModal
+  padding: 4rem 2rem
+  border-radius: 0.4rem
+  background-color: rgba(0,0,0,.3)
+  width: 400px
+  font-size: 1.5rem
+  font-family: arial
+  .title
+    font-size: 2.5rem
+    margin-bottom: 3rem
+  .selectBlock
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 2rem
+  .select
+    border: none
+    padding: .5rem 2rem
+    outline: none
+    border-radius: 1rem
+    margin-left: 1rem
+  .input
+    padding: .2rem 1rem
+    margin: 1rem 0 1rem 0
+    outline: none
+  .inputTitle
+    margin-bottom: 1rem
+  .inputBlock
+    display: flex
+    .searchTokenInput
+      text-align: right
+      outline: none
+      border: none
+      flex: 1
+      font-size: 1.8rem
+      border-radius: 0.4rem
+      box-sizing: border-box
+      background: transparent
+      color: white
+  .operateBtn
+    width: 100%
+    height: 4rem
+    border: solid .1rem $yellow
+    color: white
+    background-color: transparent
+    border-radius: 0.4rem
+    margin-top: 2rem
+    font-size: 1.6rem
+    font-weight: 600
+    cursor: pointer
+    &:hover
+      transition: .5s
+      background: $yellow
+  .swapBtn
+    background-color: #fbae21
+    font-weight: 600
+    padding: 1.2rem 2rem
+    &:hover
+      transition: .5s
+  .totalRoutes
+    text-align: center
+    margin: 24px 0px 8px
+  .routesContainer
+    display: block
+    position: relative
+    padding: 15px 16px 16px
+    margin-top: 24px
+    font-size: 13px
+    border-radius: 0.4rem
+    transition: border .2s, background-color .2s
+    border: 1px solid $yellow
+  .bestRouteTag
+    display: block
+    font-size: 11px
+    background: $yellow
+    color: white
+    padding: 4px 10px
+    border-radius: 0.4rem
+    position: absolute
+    left: -1px
+    top: -10px
+    z-index: 1
+  .routeInfo
+    display: flex
+    justify-content: space-between
+    font-size: 16px
+  .feeInfo
+    display: flex
+    justify-content: space-between
+    margin-top: 8px
+    opacity: 0.75
+  .tokenSelect
+    border: .1rem solid $yellow
+    margin: 24px 0
+    padding: 15px 16px 16px
+    border-radius: 0.4rem
+  .swapPage
+    position: relative
+    height: calc( 100vh - 7rem )
+    color: $white
+    background-color: $main_blue
+  .overlay
+    transition: .3s
+    background-color: rgba(0,0,0,.5)
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 99
+  .tokenListTitleRow
+    padding: 1rem 2.5rem 0 2.5rem
+    font-size: 1.4rem
+    font-weight: 600
+    height: 5rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .tokenContainer
+    max-width: 45rem
+    width: calc(100vw - 1.6rem)
+    height: calc( 100vh - 14rem)
+    overflow: hidden
+    background-color: $token_list_bgc
+    position: absolute
+    top: 10rem
+    left: 50%
+    transform: translateX(-50%)
+    border-radius: 0.4rem
+  .closeIcon
+    cursor: pointer
+  .header
+    height: 6rem
+    padding: 2.4rem
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font-size: 1.6rem
+    font-weight: 600
+    letter-spacing: 1px
+    border-bottom: solid .1rem $white
+  .list
+    height: calc(100% - 26rem)
+    overflow: scroll
+    padding: 0 1.5rem 2rem 1.5rem
+    &::-webkit-scrollbar
+      display: none
+  .tokenRow
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: .8rem 1.2rem
+    font-size: 1.6rem
+    cursor: pointer
+    &:hover
+      background-color: $coin_select_block_bgc
+      opacity: .7
+  .tokenItem
+    display: flex
+  .tokenLogo
+    width: 2rem
+    height: 2rem
+    border-radius: 50%
+    overflow: hidden
+    margin-right: 1.2rem
+  .selectTokenBtn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    padding: .5rem
+    padding-left: 0
+    border-radius: .5rem
+    font-weight: 500
+    height: 4rem
+    &:hover
+      background-color: $token_list_bgc
+      cursor: pointer
+  .img
+    width: 2.4rem
+    height: 2.4rem
+    border-radius: 50%
+    margin-right: 1rem
+
